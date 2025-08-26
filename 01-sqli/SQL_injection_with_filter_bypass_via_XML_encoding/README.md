@@ -20,6 +20,12 @@ As usual, the first step is to analyze the functionality of the lab application.
 
 I can check the stock in several locations for each of the products so I do this and check the result in Burp Proxy:
 
+// 📝 CLICK "VIEW PRODUCT" > CHECK STOCK TO GET PROCDUCT/STOCK URL REQUEST
+
+// 📝 SEND THE REQUEST TO REPEATER TO SEND AGAIN AND AGAIN AND SEE RESPONSE
+
+
+
 ![](img/vanilla_stock_check.png)
 
 Now I want to see what happens if I try to inject a basic SQL command. The next steps I perform for both arguments `productId` and `storeId` separately as I do not know the SQL statement that is used and whether both arguments are injectable. 
@@ -43,6 +49,9 @@ There are a number of websites that explain XML entities, for example [tutorials
 I can encode characters with their decimal or hexadecimal values with `&#NN;` and `&#xNN;` respectively. Fortunately, the [Hackvertor](https://github.com/portswigger/hackvertor) extension comes with both. I start with decimal entities. 
 
 Heckvertor shows the actual output in its interface and I could directly use the encoded values in Repeater. However, using `<@dec_entities>1 UNION SELECT NULL<@/dec_entities>` is easier to read and much better to use than `&#49;&#32;&#85;&#78;&#73;&#79;&#78;&#32;&#83;&#69;&#76;&#69;&#67;&#84;&#32;&#78;&#85;&#76;&#76;`.
+
+// 📝 HACKVERTOR > CLICK ENCODE > DEC_ENTITIES
+
 
 ![](img/hacvertor.png)
 
@@ -84,7 +93,15 @@ I have a single output column in which I need to transport both usernames and pa
 
 I concatenate the username and passwords together with a single `|` as separator: `<@dec_entities>1 UNION SELECT username || '|' || password FROM users<@/dec_entities>`. If usernames or passwords contain my separator, I may need to change it, especially if I automate it in a script later on.
 
-![](img/extracted_credentials.png)
+// 📝 LAST PART ATTACK IS DETECTED IN RESPONCE SO USE THE ENCODE OUTPUT
+
+![](img/encoded_injection.png)
+
+
+// 📝ENCODED OUTPUT IN XML 
+
+![](img/how_the_injection_should_be.png)
+
 
 Fortunately, all usernames and passwords are alphanumeric. 
 
@@ -97,5 +114,6 @@ I use the credentials of `administrator` to log in and the lab updates to
 ## Closing thoughts about Hackvertor
 
 This was my first attempt at using the Hackvertor extension. Until today, whenever I needed encoded characters I copied the encoded string into Burp Repeater. Of course, it was somewhere between difficult and impossible to quickly adjust the string in the Repeater, most of the time I edited the string elsewhere and again copied the encoded version into Repeater. This also meant that Burp Intruder was not an option if any variable content was within the encoded string.
+
 
 Now I saw how easy it is to have a possibility that is a very readable and easily modifiable string in Burp that is useable in both Repeater and Intruder. Hackvertor definitely earned its place on my must-have extensions.

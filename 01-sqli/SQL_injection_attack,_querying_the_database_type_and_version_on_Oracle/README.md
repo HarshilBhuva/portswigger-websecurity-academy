@@ -36,6 +36,8 @@ The `SELECT version FROM v$instance` only returns the version number, the first 
 
 Therefore I need to inject `' UNION SELECT 'a',banner FROM v$version--` to obtain the version information with the following query:
 
+// 📝 NO PETS TAB IN 2025, CLICK LIFESTYLE
+
 ```sql
 SELECT * FROM someTable WHERE category='Pets' UNION SELECT 'a',banner FROM v$version--'
 ```

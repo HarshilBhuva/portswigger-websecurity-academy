@@ -49,7 +49,7 @@ SELECT * FROM someTable WHERE category = 'Accessories' UNION (select null, 'x', 
 
 Injecting the requested string will solve the exercise:
 
-// 📝 2025 LAB – YOU ARE ASKED TO RETURN A SPECIFIC GIVEN TEXT. CHECK THE "MAKE DATABASE RETURN" LINK UNDER THE LAB TITLE
+// 📝 2025 LAB – YOU ARE ASKED TO RETURN A SPECIFIC GIVEN TEXT. CHECK THE "MAKE DATABASE RETRIEVE STRING" TEXT UNDER THE LAB TITLE
 
 ![success](img/success.png)
 

@@ -36,6 +36,8 @@ The [SQL injection](https://portswigger.net/web-security/sql-injection/cheat-she
 
 Therefore I need to inject `' UNION SELECT 'a',@@version#` to obtain the version information with the following query:
 
+// 📝 NO PETS TAB IN 2025, CLICK GIFTS TAB
+
 ```sql
 SELECT * FROM someTable WHERE category='Pets' UNION SELECT 'a',@@version#'
 ```

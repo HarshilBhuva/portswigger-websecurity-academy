@@ -68,5 +68,5 @@ Now I know there are three columns and the lab updates to
 An alternative way to count the columns is with `ORDER BY`. Injecting `' ORDER BY 1--` will order the results by the first column of the result. Incrementing the value leads to an internal server error when using `' ORDER BY 4--` as the database is instructed to order by a column that does not exist. Thus the correct number of columns is 3.
 
 ```sql
-SELECT * FROM someTable WHERE category = 'Accessories' ORDER BY 4--
+SELECT * FROM someTable WHERE category = 'Accessories' ORDER BY 3--
 ```

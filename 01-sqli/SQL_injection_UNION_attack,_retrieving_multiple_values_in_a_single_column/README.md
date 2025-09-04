@@ -51,6 +51,7 @@ The latter version is much more convenient. Fortunately, the [cheat sheet](https
 To be able to distinguish username from password, I also need to concatenate some unique-ish string in between. I use an invalid category so that no articles are found and only my output appears.
 
 I inject `X' UNION (SELECT null,username || '~~~' || password FROM users)--` to create a SQL query like this:
+// 📝 INSERT AFTER PETS
 
 ```sql
 SELECT * FROM someTable WHERE category = 'X' UNION (SELECT null,username || '~~~' || password FROM users)--

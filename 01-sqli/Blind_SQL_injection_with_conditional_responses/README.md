@@ -40,6 +40,8 @@ SELECT trackingId FROM someTable WHERE trackingId = 'qnLH78fKAPMJdjw7' and 1=1--
 
 The content of the cookie is
 
+// 📝 SEND THE REQUEST IN REPEATER AND CHECK THE RESPONSE — VERY IMPORTANT
+
 `Cookie: TrackingId=qnLH78fKAPMJdjw7' and 1=1--; session=lcaWJjxc1ubzKT0CsGu2nDEfePtHIni5`
 
 --> Results in "Welcome back"
@@ -53,6 +55,8 @@ SELECT trackingId FROM someTable WHERE trackingId = 'qnLH78fKAPMJdjw7' and 1=2--
 ```
 
 The content of the cookie is
+
+// 📝 CHECK THE RESPONSE — VERY IMPORTANT
 
 `Cookie: TrackingId=qnLH78fKAPMJdjw7' and 1=2--; session=lcaWJjxc1ubzKT0CsGu2nDEfePtHIni5`
 
@@ -110,9 +114,18 @@ As an alternative, I can check with '>' instead of '='. It results in the "Welco
 
 I Brute force the length with Burp Intruder (Sniper, Payload is '1' argument in query)
 
-![Enumerate the length of the password](img/length_of_password.png)
+// 📝 RIGHT-CLICK ON THE REQUEST TAB IN REPEATER AND SEND TO INTRUDER.
 
-![Enumerate length of password full results](img/length_of_password_result.png)
+THEN HIGHLIGHT 1 IN THE REQUEST PAYLOAD AND CLICK ADD.
+
+PAYLOAD TYPE → SELECT NUMBERS AND SET CONFIGURATION FROM 1 TO 100.
+
+![Payload_example](img/payload.png)
+
+START THE ATTACK AND AFTER IT IS FINISHED, LOOK FOR THE HIGHEST LENGTH.
+
+IN THAT REQUEST RESPONSE YOU’LL SEE LENGTH WHERE PASSWORD = 20 IS CORRECT, SO YOU ARE WELCOMED BACK.
+![Payload_results](img/responce.png)
 
 --> Password is exactly 20 characters long
 
@@ -128,6 +141,8 @@ Cookie content: `TrackingId=qnLH78fKAPMJdjw7' and (select substring(password,1,1
 
 We find out that the first character is not an `a`, but using Burp Suite Intruder this can be automated easily. With the free version, this is rather slow, but scripting it in python is not difficult either.
 
+// 📝 SEND THE REQUEST WITH A NEW PAYLOAD TO INTRUDER AND HIGHLIGHT 'a'. THEN FOLLOW THE PIC ~~ THE HIGHEST LENGTH INDICATES THE FIRST LETTER.
+
 ![Enumerate the first character of the password](img/enumerate_password_first.png)
 
 The first character is 'k'
@@ -142,12 +157,16 @@ Attack type: *Cluster bomb*
 
 - *Payload 1*: numeric sequential, 1...20
 - *Payload 2*: Brute force (see above) - for real-life, add special characters
+  
+// 📝 ADD 'WELCOME BACK' IN VIEW FILTER
 
 This results in these responses with the 'Welcome Back' message:
 
 ![Result of password enumeration](img/enumerate_password_result.png)
 
 Reordering it numerically according to Payload 1 will result in the password: kdd113dnq7t34h70nhj7
+
+// 📝 YOUR PASSWORD WILL BE DIFFERENT EACH TIME. NOTE DOWN YOUR PASSWORD AND USE IT TO LOGIN
 
 ## Try login
 

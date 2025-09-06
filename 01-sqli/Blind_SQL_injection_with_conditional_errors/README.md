@@ -83,6 +83,8 @@ Getting the length is done easily by adding the `LENGTH` function at the end of 
 
 `'||(SELECT CASE WHEN (1=1) THEN to_char(1/0) ELSE NULL END FROM users WHERE username='administrator' and LENGTH(password)=1)||'`
 
+// 📝 EDIT LENGTH(PASSWORD)=1
+
 This will show the page, indicating that the `1=1` check was never executed. Using Burp Intruder, I test all numbers from 1 to 50 as length, and get this result:
 
 ![Length of password](img/length_of_password.png)
@@ -105,6 +107,9 @@ Attack type: *Cluster bomb*
 - *Payload 2*: Brute force - for real-life, add special characters
 
 Filtering on server errors again, we can read the password: `3bk8bdchxubqft2tgsxr`
+
+// 📝 ALSO SORT ASCENDING BY PAYLOAD 1
+
 
 ![Brute force password, result](img/brute_force_of_password_result.png)
 

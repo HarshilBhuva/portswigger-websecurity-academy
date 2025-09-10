@@ -106,6 +106,8 @@ To enumerate the password is basically the same, just by checking each character
 
 `'||(SELECT pg_sleep(3) FROM users WHERE username='administrator' AND SUBSTR(password,1,1)='a')||'`
 
+// 📝 ADD PAYLOAD IN FIRST '1' AND THEN ON 'A'
+
 ![cookie for password enumeration](img/cookie_enumerate_password.png)
 
 Using Burp Intruder again, with attack type: *Cluster bomb*

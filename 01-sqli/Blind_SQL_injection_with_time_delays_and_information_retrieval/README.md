@@ -45,7 +45,7 @@ The important thing is that the query must remain valid, as if it errors out we 
 I try to form the following query (ABC being the value of the tracking cookie).
 
 ```sql
-SELECT trackingId FROM someTable WHERE trackingId = 'ABC' || (<CODE HERE>) || ''
+SELECT trackingId FROM someTable WHERE trackingId = 'ABC' || (<CODE HERE>) || '
 ```
 
 The first character injected is the single quote after the ABC, then I concatenate the output of my code, followed by another concatenation with a single quote. For Oracle and PostgreSQL, the `||`s are used for concatenation, for Microsoft a `+` and for MySQL a single space.

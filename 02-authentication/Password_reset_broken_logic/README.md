@@ -1,3 +1,5 @@
+// 📝 COMPLETED – BY HARSHIL BHUVA
+
 # Write-up: Password reset broken logic @ PortSwigger Academy
 
 ![logo](img/logo.png)

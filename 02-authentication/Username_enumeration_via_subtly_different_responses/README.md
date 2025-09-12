@@ -1,3 +1,5 @@
+// 📝 COMPLETED – BY HARSHIL BHUVA
+
 # Write-up: Username enumeration via subtly different responses @ PortSwigger Academy
 
 ![logo](img/logo.png)

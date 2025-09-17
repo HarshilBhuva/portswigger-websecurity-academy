@@ -50,6 +50,8 @@ The one parameter that is definitely checked for valid usernames is the password
 
 Finally, a useful response:
 
+// 📝 SORT YOUR RESPONSES RECEIVED
+
 ![valid username found](img/valid-username-found.png)
 
 Valid username: **athena**

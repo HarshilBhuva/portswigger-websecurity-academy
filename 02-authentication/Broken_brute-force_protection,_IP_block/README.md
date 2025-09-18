@@ -38,10 +38,12 @@ I capture a login attempt and send it to `Turbo Intruder` (in the context menu: 
 
 I want both username and password fields to be configurable. For every entry in the `candidate_passwords.txt` file, I want to queue an additional request with the known good credentials `wiener:peter`. And as I'm unsure how concurrency and the brute force protection interact, I opt for a purely serial approach:
 
+// 📝 ADD "%s" FOR PAYLOAD HOLDERS
+
 ![Turbo intruder setup](img/turbo_intruder.png)
 
 Script version:
-
+// 📝 EDIT THE URL ACCORDING TO YOUR FILE LOCATION
 ```python
 # Find more example scripts at https://github.com/PortSwigger/turbo-intruder/blob/master/resources/examples/default.py
 def queueRequests(target, wordlists):

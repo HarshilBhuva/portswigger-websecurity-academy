@@ -53,6 +53,6 @@ If `/login2` only verifies the 2FA code without checking that it was preceded by
 
 ![login account carlos in intruder, result](img/brute_forced_second_factor.png)
 
-Now simply select `Request in browser` from the context menu to:
+Now simply select `Request in browser>In original session` from the context menu to:
 
 ![success](img/success.png)

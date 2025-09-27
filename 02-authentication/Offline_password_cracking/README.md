@@ -1,3 +1,5 @@
+// 📝 COMPLETED – BY HARSHIL BHUVA WITH PORTSWIGGER SOLUTION
+
 # Write-up: Offline password cracking @ PortSwigger Academy
 
 ![logo](img/logo.png)

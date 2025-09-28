@@ -1,3 +1,5 @@
+// 📝 COMPLETED – BY HARSHIL BHUVA WITH PORTSWIGGER SOLUTION
+
 # Write-up: Brute-forcing a stay-logged-in cookie @ PortSwigger Academy
 
 ![logo](img/logo.png)
